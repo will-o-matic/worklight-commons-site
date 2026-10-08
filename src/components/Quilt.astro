@@ -1,0 +1,12 @@
+---
+interface Props {
+  count?: number;
+}
+
+const { count = 10 } = Astro.props;
+const palette = ['var(--sage)', 'var(--mustard)', 'var(--terracotta)', 'var(--flax)', 'var(--slate)'];
+const squares = Array.from({ length: count }, (_, i) => palette[(i * 2 + Math.floor(i / 5)) % palette.length]);
+---
+<div class="quilt" aria-hidden="true" style={`--quilt-count:${count}`}>
+  {squares.map((color) => <span style={`background:${color}`}></span>)}
+</div>

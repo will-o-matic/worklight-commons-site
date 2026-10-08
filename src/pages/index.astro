@@ -1,6 +1,54 @@
 ---
 import Base from '../layouts/Base.astro';
+import Quilt from '../components/Quilt.astro';
+import ProjectPatch from '../components/ProjectPatch.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { projects } from '../data/projects.ts';
+
+const values = [
+  { title: 'Useful first', body: "We build things we'd want to use on a hard Tuesday." },
+  { title: 'Made with care', body: 'Small and well-crafted beats big and noisy.' },
+  { title: 'Respectful', body: "Your data and attention aren't the product." },
+];
 ---
 <Base>
-  <section class="section"><div class="wrap"><h1>Worklight Commons</h1></div></section>
+  <section class="section">
+    <div class="wrap">
+      <h1>Built together. Made to make life a little better.</h1>
+      <p class="lede">
+        Worklight Commons is a collective of creators who build apps and systems to make the world a little better.
+      </p>
+      <Quilt count={10} />
+    </div>
+  </section>
+
+  <section class="section band" aria-labelledby="values-heading">
+    <div class="wrap">
+      <h2 id="values-heading">Many hands, one quilt.</h2>
+      <ul class="values">
+        {values.map((v) => (
+          <li>
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-heading">
+    <div class="wrap">
+      <h2 id="projects-heading">What we've made</h2>
+      <ul class="patches">
+        {projects.map((project) => <ProjectPatch project={project} />)}
+        <li class="patch patch--empty">
+          <span class="patch__status">Next patch</span>
+          <h3>More on the way</h3>
+          <p>We're always stitching something new.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <ContactBand />
 </Base>

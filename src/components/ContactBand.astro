@@ -1,0 +1,14 @@
+---
+import { CONTACT_EMAIL } from '../data/site.ts';
+---
+<section class="section" aria-labelledby="contact-heading">
+  <div class="wrap">
+    <div class="contact on-dark">
+      <div>
+        <h2 id="contact-heading">Say hello.</h2>
+        <p>Questions, ideas, or want to make something with us?</p>
+      </div>
+      <a class="pill" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </div>
+  </div>
+</section>

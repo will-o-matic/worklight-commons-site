@@ -1,0 +1,18 @@
+---
+import type { Project } from '../data/projects.ts';
+import { TONES } from '../data/tones.ts';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { bg, fg } = TONES[project.tone];
+const host = new URL(project.url).hostname;
+---
+<li class="patch" style={`background:${bg};color:${fg}`}>
+  <span class="patch__status">{project.status}</span>
+  <h3>{project.name}</h3>
+  <p>{project.blurb}</p>
+  <a href={project.url}>{host} <span aria-hidden="true">→</span></a>
+</li>
