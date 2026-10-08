@@ -36,6 +36,18 @@ test('privacy page covers this website only', () => {
   }
 });
 
+test('prose column aligns with the header instead of centering', () => {
+  for (const route of ['/support/', '/privacy/']) {
+    const h = page(route);
+    assert.ok(!/class="wrap prose"/.test(h), `${route} centers its prose column`);
+    assert.match(h, /<div class="wrap"><div class="prose">/);
+  }
+});
+
+test('404 quilt uses standard-size squares', () => {
+  assert.match(page('404'), /<div class="quilt" aria-hidden="true" style="--quilt-count:10"/);
+});
+
 test('404 page links home', () => {
   const h = page('404');
   assert.ok(h.includes('This patch is missing'));

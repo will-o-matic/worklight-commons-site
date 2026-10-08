@@ -7,7 +7,7 @@ const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Support re
 ---
 <Base title="Support" description="Get help with Worklight Commons apps. Email us and a real person will write back.">
   <section class="section">
-    <div class="wrap prose">
+    <div class="wrap"><div class="prose">
       <h1>Support</h1>
       <p class="lede">
         Stuck on something, found a bug, or have an idea? Email us and a real person from Worklight Commons will
@@ -31,6 +31,6 @@ const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Support re
       <ul>
         {projects.map((p) => <li><a href={p.url}>{p.name}</a></li>)}
       </ul>
-    </div>
+    </div></div>
   </section>
 </Base>

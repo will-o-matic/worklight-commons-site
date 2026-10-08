@@ -50,3 +50,7 @@ test('focus ring adapts to patch and dark backgrounds', () => {
   assert.match(css, /\.on-dark :focus-visible\s*\{[^}]*outline-color:\s*var\(--mustard\)/);
   assert.match(html(), /class="contact on-dark"/);
 });
+
+test('patch link hugs its text so the focus ring frames only the link', () => {
+  assert.match(css, /\.patch a\s*\{[^}]*align-self:\s*flex-start/);
+});

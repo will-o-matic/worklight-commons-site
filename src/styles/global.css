@@ -81,7 +81,7 @@ p { margin: 0 0 1em; }
 .patch__status { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
 .patch h3 { font-size: 1.4rem; margin: 0; }
 .patch p { margin: 0; }
-.patch a { font-weight: 700; margin-top: auto; overflow-wrap: anywhere; }
+.patch a { font-weight: 700; margin-top: auto; align-self: flex-start; overflow-wrap: anywhere; }
 .patch--empty { background: transparent; color: var(--muted); border: 2px dashed #c9bfa9; }
 .patch--empty::after { display: none; }
 
