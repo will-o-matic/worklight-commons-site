@@ -36,6 +36,10 @@ test('privacy page covers this website only', () => {
   }
 });
 
+test('privacy page discloses that an email provider processes mail', () => {
+  assert.ok(page('/privacy/').includes('Our email provider processes messages to deliver them'));
+});
+
 test('prose column aligns with the header instead of centering', () => {
   for (const route of ['/support/', '/privacy/']) {
     const h = page(route);
