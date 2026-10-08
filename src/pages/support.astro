@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { CONTACT_EMAIL } from '../data/site.ts';
+import { projects } from '../data/projects.ts';
+
+const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Support request')}`;
+---
+<Base title="Support" description="Get help with Worklight Commons apps. Email us and a real person will write back.">
+  <section class="section">
+    <div class="wrap prose">
+      <h1>Support</h1>
+      <p class="lede">
+        Stuck on something, found a bug, or have an idea? Email us and a real person from Worklight Commons will
+        write back.
+      </p>
+      <p><a class="pill" href={mailto}>Email {CONTACT_EMAIL}</a></p>
+
+      <h2>What to include</h2>
+      <ul>
+        <li>Which app you're using (for example, Knit Life Manager)</li>
+        <li>Your device, and your browser or operating system version</li>
+        <li>What you were trying to do, what happened instead, and the steps to get there</li>
+        <li>Screenshots, if you have them</li>
+      </ul>
+
+      <h2>When you'll hear back</h2>
+      <p>We reply within a few business days.</p>
+
+      <h2>App help</h2>
+      <p>Each of our apps may also have its own help resources:</p>
+      <ul>
+        {projects.map((p) => <li><a href={p.url}>{p.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

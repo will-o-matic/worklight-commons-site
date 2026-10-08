@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Quilt from '../components/Quilt.astro';
+---
+<Base title="Page not found" description="This page doesn't exist.">
+  <section class="section">
+    <div class="wrap">
+      <h1>This patch is missing.</h1>
+      <p class="lede">The page you're looking for isn't here. It may have moved, or the link may be mistyped.</p>
+      <p><a class="pill" href="/">Back to the homepage</a></p>
+      <Quilt count={5} />
+    </div>
+  </section>
+</Base>
