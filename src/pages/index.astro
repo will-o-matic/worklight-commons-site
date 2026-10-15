@@ -6,15 +6,15 @@ import ContactBand from '../components/ContactBand.astro';
 import { projects } from '../data/projects.ts';
 
 const values = [
-  { title: 'Useful first', body: "We build things we'd want to use on a hard Tuesday." },
-  { title: 'Made with care', body: 'Small and well-crafted beats big and noisy.' },
-  { title: 'Respectful', body: "Your data and attention aren't the product." },
+  { title: 'We make good stuff', body: "We build things we enjoy using." },
+  { title: 'Made with care', body: 'In a world where AI is pushing aside human creativity in favor of generated slop, we are choosing a better path.' },
+  { title: 'Unabashedly Ours', body: 'We value individual creativity and unique problem solving.'}
 ];
 ---
 <Base>
   <section class="section">
     <div class="wrap">
-      <h1>Built together. Made to make life a little better.</h1>
+      <h1>Built together. Built for you.</h1>
       <p class="lede">
         Worklight Commons is a collective of creators who build apps and systems to make the world a little better.
       </p>
@@ -42,8 +42,8 @@ const values = [
       <ul class="patches">
         {projects.map((project) => <ProjectPatch project={project} />)}
         <li class="patch patch--empty">
-          <span class="patch__status">Next patch</span>
-          <h3>More on the way</h3>
+          <span class="patch__status"></span>
+          <h3>What's next??</h3>
           <p>We're always stitching something new.</p>
         </li>
       </ul>
