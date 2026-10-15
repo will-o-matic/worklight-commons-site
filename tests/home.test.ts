@@ -7,8 +7,9 @@ import { page } from './helpers.ts';
 const html = () => page('/');
 const css = readFileSync(join(import.meta.dirname, '..', 'src', 'styles', 'global.css'), 'utf8');
 
+// Copy is free to change; these tests pin structure and the facts Apple reviewers rely on.
 test('hero carries the mission', () => {
-  assert.match(html(), /<h1[^>]*>Built together\. Made to make life a little better\.<\/h1>/);
+  assert.equal(html().match(/<h1[^>]*>[^<]+<\/h1>/g)?.length, 1, 'expected exactly one non-empty h1');
   assert.ok(html().includes('collective of creators who build apps and systems to make the world a little better'));
 });
 
@@ -18,8 +19,8 @@ test('decorative quilt is hidden from assistive tech', () => {
 
 test('values section has three values', () => {
   const h = html();
-  assert.ok(h.includes('Many hands, one quilt.'));
-  for (const v of ['Useful first', 'Made with care', 'Respectful']) assert.ok(h.includes(v), `missing value ${v}`);
+  const values = h.match(/<ul class="values">([\s\S]*?)<\/ul>/)?.[1] ?? '';
+  assert.equal(values.match(/<li>\s*<h3>[^<]+<\/h3>\s*<p>[^<]+<\/p>/g)?.length, 3, 'expected three titled values');
 });
 
 test('projects section lists Knit and the placeholder patch', () => {
@@ -28,7 +29,7 @@ test('projects section lists Knit and the placeholder patch', () => {
   assert.ok(h.includes('href="https://knitlifemanager.com"'));
   assert.ok(h.includes('Knit Life Manager'));
   assert.ok(h.includes('Makes managing complex households and lives easier.'));
-  assert.ok(h.includes('More on the way'));
+  assert.match(h, /<li class="patch patch--empty">[\s\S]*?<h3>[^<]+<\/h3>/);
 });
 
 test('contact band links to the mailbox', () => {
